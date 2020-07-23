@@ -17,6 +17,7 @@ module.exports = {
       afterCreate: (conn, done) => {
         conn.run("PRAGMA foreign_keys = ON", done)
       }
+    }
   },
 
   staging: {
@@ -50,5 +51,4 @@ module.exports = {
       tableName: 'knex_migrations'
     }
   }
-
-};
+}

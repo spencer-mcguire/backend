@@ -5,14 +5,24 @@ module.exports = {
   development: {
     client: 'sqlite3',
     connection: {
-      filename: './dev.sqlite3'
-    }
+      filename: './api/data/essentialism.sqlite3'
+    },
+    migrations: {
+      directory: './api/data/migrations'
+    },
+    seeds: {
+      directory: './api/data/seeds'
+    },
+    pool: {
+      afterCreate: (conn, done) => {
+        conn.run("PRAGMA foreign_keys = ON", done)
+      }
   },
 
   staging: {
     client: 'postgresql',
     connection: {
-      database: 'my_db',
+      database: 'essentialism_staged',
       user:     'username',
       password: 'password'
     },
@@ -28,7 +38,7 @@ module.exports = {
   production: {
     client: 'postgresql',
     connection: {
-      database: 'my_db',
+      database: 'essentialism',
       user:     'username',
       password: 'password'
     },

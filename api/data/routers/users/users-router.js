@@ -9,7 +9,7 @@ const authError = {err: 'Invalid Credentials'}
 
 
 // REGISTER
-user.post('/register', async(req, res, next) => {
+user.post('/register', validateUserInfo(), async(req, res, next) => {
   try {
     const {username, password} = req.body
 
@@ -25,7 +25,7 @@ user.post('/register', async(req, res, next) => {
 })
 
 // LOGIN
-user.post('/login', async(req, res, next) => {
+user.post('/login', validateUserInfo(), async(req, res, next) => {
   try{
     const {username, password} = req.body
 
@@ -53,4 +53,12 @@ user.get('/logout', async(req, res, next) => {
   catch(err) {next(err)}
 })
 
+function validateUserInfo() {
+  return (req, res, next) => {
+    if (!req.body.username || !req.body.password) {
+      return res.status(400).json({err: 'username AND password are required'})
+    }
+    else {next()}
+  }
+}
 module.exports = user

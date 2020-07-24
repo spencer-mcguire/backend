@@ -1,6 +1,5 @@
 const express = require('express')
 const bcrypt = require('bcryptjs')
-const session = require('express-session')
 
 const db = require('./users-model')
 

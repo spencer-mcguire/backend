@@ -1,7 +1,8 @@
 const express = require('express')
 const cors = require('CORS')
-const session = require('express-session')
-const KnexSessionStore = require('connect-session-knex')(session)
+
+// const session = require('express-session')
+// const KnexSessionStore = require('connect-session-knex')(session)
 
 const dbConfig = require('./data/dbConfig')
 
@@ -12,15 +13,15 @@ const userRouter = require('./data/routers/users/users-router')
 
 server.use(express.json())
 server.use(cors())
-server.use(session({
-  resave: false,
-  saveUninitialized: false,
-  secret: 'cake',
-  store: new KnexSessionStore({
-    knex: dbConfig,
-    createtable: true
-  })
-}))
+// server.use(session({
+//   resave: false,
+//   saveUninitialized: false,
+//   secret: 'cake',
+//   store: new KnexSessionStore({
+//     knex: dbConfig,
+//     createtable: true
+//   })
+// }))
 
 // err mw
 server.use((err, req, res, next) => {

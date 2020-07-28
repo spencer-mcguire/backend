@@ -8,18 +8,18 @@ module.exports = {
 
 
 function findById(id) {
-  return db('users')
+  return db('projects')
   .where('id', id)
   .first()
 }
 
-function add(newUser) {
-  return db('users')
-  .insert(newUser, 'id').then(ids => {{id: ids[0]}})
+function add(newProject) {
+  return db('projects')
+  .insert(newProject, 'id').then(ids => {{id: ids[0]}})
 }
 
 function remove(id) {
-  return db('users')
+  return db('projects')
   .where('id', id)
   .del()
 }

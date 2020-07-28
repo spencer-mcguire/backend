@@ -4,9 +4,9 @@
 ## Auth
 | Method | Endpoint                | Description                                                                                                                                                                 |
 | ------ | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| POST   | /api/register           | Creates a user with the information sent inside the `request body`.                                                                                                         |
-| POST   | /api/login              | Logs in a user using information sent inside of the `request body`.                                                                                                         |
-| GET    | /api/logout             | Logs out user                                                                                                                                                          |
+| POST   | /api/users/register     | Creates a user with the information sent inside the `request body`.                                                                                                         |
+| POST   | /api/users/login        | Logs in a user using information sent inside of the `request body`.                                                                                                         |
+| GET    | /api/users/logout       | Logs out user                                                                                                                                                          |
 
 
 | field      | data type        | metadata                                            |

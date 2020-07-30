@@ -23,7 +23,7 @@
 | Method | Endpoint                  | Description                                                           |
 | ------ | ------------------------- | ----------------------------------------------------------------------|
 | GET    | /api/projects/:userId     | Gets all of a user's projects                                         |
-| GET    | /api/projects/:userId     | Gets a specific user's project by the id specified in the url         |
+| GET    | /api/projects/:userId/:id | Gets a specific user's project by the id specified in the url         |
 | POST   | /api/projects/:userId     | Creates a project under a specific user                               |
 | DELETE | /api/projects/:userId/:id | Deletes a specific project of a user                                  |
 

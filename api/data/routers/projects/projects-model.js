@@ -1,19 +1,19 @@
 const db = require('../../dbConfig')
 
 module.exports = {
-  findByUserId,
-  findById,
+  allUsersProjects,
+  specificProject,
   add,
   remove
 }
 
 
-function findByUserId(userId) {
+function allUsersProjects(userId) {
   return db('projects')
   .where('user_id', userId)
 }
 
-function findById(userId, id) {
+function specificProject(userId, id) {
   return db('projects')
   .where('user_id', userId)
   .where('id', id)

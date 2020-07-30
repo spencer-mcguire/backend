@@ -5,6 +5,7 @@ function authUser() {
     try{
       
       const token = req.cookies.token
+
       if(!token) {
         return res.status(401).json({msg: "You FOOL! You're not logged in!"})
       }

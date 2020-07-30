@@ -2,6 +2,7 @@ const db = require('../../dbConfig')
 
 module.exports = {
   findByUserId,
+  findById,
   add,
   remove
 }

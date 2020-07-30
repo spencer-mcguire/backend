@@ -1,16 +1,21 @@
 const db = require('../../dbConfig')
 
 module.exports = {
-  findById,
+  findByUserId,
   add,
   remove
 }
 
 
-function findById(id) {
+function findByUserId(userId) {
   return db('projects')
+  .where('user_id', userId)
+}
+
+function findById(userId, id) {
+  return db('projects')
+  .where('user_id', userId)
   .where('id', id)
-  .first()
 }
 
 function add(newProject) {

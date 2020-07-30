@@ -3,6 +3,7 @@ const db = require('./goals-model')
 
 const goal = express.Router()
 
+// get the goals of a user
 goal.get('/api/goals/:userId', async(req, res, next) => {
   try {
     const goals = await db.find(req.params.userId)

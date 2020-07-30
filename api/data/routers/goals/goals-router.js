@@ -1,10 +1,12 @@
 const express = require('express')
+
 const db = require('./goals-model')
+const auth = require('../../middleware/auth-router')
 
 const goal = express.Router()
 
 // get the goals of a user
-goal.get('/api/goals/:userId', async(req, res, next) => {
+goal.get('/:userId', auth(), async(req, res, next) => {
   try {
     const goals = await db.find(req.params.userId)
     
@@ -14,11 +16,11 @@ goal.get('/api/goals/:userId', async(req, res, next) => {
 })
 
 // add a goal
-goal.post('/api/goals/:userId', async(req, res, next) => {
+goal.post('/:userId', auth(), async(req, res, next) => {
   try {
     const newGoal = await db.add({...req.body, user_id: req.params.userId})
 
-    res.status(201).json(newGoal)
+    res.status(201).json({msg: 'goal added'})
   }
   catch(err) {next()}
 })

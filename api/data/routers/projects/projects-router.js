@@ -1,21 +1,21 @@
 const express = require('express')
 
 const db = require('./projects-model')
-const db = require('../../dbConfig')
+const auth = require('../../middleware/auth-router')
 
 const project = express.Router()
 
 // GET all of user's projects
-project.get('/api/projects/:userId', auth(), async(req, res, next) => {
+project.get('/:userId', auth(), async(req, res, next) => {
   try {
     const projects = await db.allUsersProjects(req.params.userId)
-
+    res.json(projects)
   }
   catch(err) {next(err)}
 })
 
 // GET specific project of user
-project.get('/api/projects/:userId/:id', auth(), async(req, res, next) => {
+project.get('/:userId/:id', auth(), async(req, res, next) => {
   try {
     const userProject = await db.specificProject(req.params.userId, req.params.id)
 
@@ -25,7 +25,7 @@ project.get('/api/projects/:userId/:id', auth(), async(req, res, next) => {
 })
 
 // CREATE
-project.post('/api/projects/:userId', async(req, res, next) => {
+project.post('/:userId', auth(), async(req, res, next) => {
   try {
     const newProject = await db.add({...req.body, user_id: req.params.userId})
 
@@ -35,7 +35,7 @@ project.post('/api/projects/:userId', async(req, res, next) => {
 })
 
 // DELETE
-project.delete('/api/projects/:userId/:id', async(req, res, next) => {
+project.delete('/:userId/:id', auth(), async(req, res, next) => {
   try{
     db.remove(req.params.userId, req.params.id)
     res.status(204).json({msg: 'project deleted'})

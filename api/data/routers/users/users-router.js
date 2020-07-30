@@ -10,7 +10,7 @@ const authError = {err: 'Invalid Credentials'}
 
 
 // REGISTER
-user.post('/api/register', checkForNames(), validateUserInfo(), async(req, res, next) => {
+user.post('/register', checkForNames(), validateUserInfo(), async(req, res, next) => {
   try {
 
     // check for first & last name
@@ -29,7 +29,7 @@ user.post('/api/register', checkForNames(), validateUserInfo(), async(req, res, 
 })
 
 // LOGIN
-user.post('/api/login', validateUserInfo(), async(req, res, next) => {
+user.post('/login', validateUserInfo(), async(req, res, next) => {
   try{
     const {username, password} = req.body
 
@@ -57,7 +57,7 @@ user.post('/api/login', validateUserInfo(), async(req, res, next) => {
   catch(err) {next(err)}
 })
 
-user.get('/api/logout', async(req, res, next) => {
+user.get('/logout', async(req, res, next) => {
   try {
     res.clearCookie('token').json({msg: 'you have been logged out'})
   }

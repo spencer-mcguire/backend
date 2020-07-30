@@ -1,17 +1,24 @@
 const express = require('express')
 
 const db = require('./values-model')
-const db = require('../../dbConfig')
+const auth = require('../../middleware/auth-router')
 
 const value = express.Router()
 
-value.get('/api/values', async(req, res, next) => {
+value.get('/', async(req, res, next) => {
   try {
-    const values = db.find()
+    const values = await db.find()
     res.json(values)
   }
   catch(err) {next(err)}
 })
+
+// value.post('/:user_id', async(req, res, next) => {
+//   try {
+//     const trut
+//   }
+//   catch(err) {next(err)}
+// })
 
 
 module.exports = value

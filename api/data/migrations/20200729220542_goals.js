@@ -4,6 +4,7 @@ exports.up = function(knex) {
     tbl.increments()
     tbl.int('user_id').unsigned().notNullable().references('id').inTable('users').onUpdate('CASCADE').onDelete('CASCADE')
     tbl.string('title').notNullable()
+    tbl.string('description')
     tbl.string('date')
   })
 };

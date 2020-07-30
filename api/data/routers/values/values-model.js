@@ -1,8 +1,9 @@
-const { findById } = require('../projects/projects-model')
 
-db = require('../../dbConfig')
+const db = require('../../dbConfig')
 
-module.exports = find
+module.exports = {
+  find
+}
 
 function find() {
   return db('values')
